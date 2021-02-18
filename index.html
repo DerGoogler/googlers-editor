@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/codemirror.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/theme/material.css">
+    <style>
+         ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        *,
+        *:after,
+        *:before {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html,
+        body {
+            height: 100%;
+        }
+        
+        html {
+            background: #fff;
+            text-rendering: optimizeLegibility;
+            line-height: 1.5em;
+            letter-spacing: .3px;
+            font-family: 'Poppins', sans-serif;
+            -webkit-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .editor .CodeMirror {
+            height: 100%;
+            width: 100%;
+            min-height: 800px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="editor"></div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/codemirror.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/xml/xml.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/css/css.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/javascript/javascript.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/htmlmixed/htmlmixed.js"></script>
+
+
+    <script>
+        var code = `class AimBot extends CallOfDuty {
+    constructor(username) {
+        this.username = username;
+    }
+
+    activate() {
+        return \`$\{this.username} has now AimBot!\`;
+    }
+}
+
+new AimBot('Coca_Cola');`;
+
+        var myCodeMirror = CodeMirror(document.querySelector('.editor'), {
+            theme: 'material',
+            indentUnit: 2,
+            tabSize: 4,
+            readOnly: false,
+            indentWithTabs: false,
+            firstLineNumber: 1,
+            lineNumbers: true,
+            viewportMargin: Infinity,
+            matchBrackets: true,
+            autoCloseBrackets: true,
+            foldGutter: true,
+            gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+            styleActiveLine: true,
+            dragDrop: true,
+            //allowDropFileTypes: [],
+            value: code,
+            mode: 'javascript'
+        });
+    </script>
+
+    <script>
+        require('./dist/renderer.js');
+    </script>
+
+</body>
+
+</html>

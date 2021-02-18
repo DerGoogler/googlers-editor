@@ -1,0 +1,66 @@
+{
+    "name": "googlers-editor",
+    "version": "1.0.0",
+    "description": "A minimal Electron application written with Typescript",
+    "scripts": {
+        "start": "npm run build && electron ./dist/main.js",
+        "build-win": "electron-builder build --win",
+        "pack": "electron-builder --dir",
+        "dist": "electron-builder",
+        "build": "tsc",
+        "watch": "tsc -w",
+        "lint": "eslint -c .eslintrc --ext .ts ./src"
+    },
+    "build": {
+        "appId": "com.dergoogler.editor",
+        "asar": true,
+        "productName": "Googlers Editor",
+        "npmRebuild": false,
+        "compression": "maximum",
+        "extends": null,
+        "mac": {
+            "target": "zip"
+        },
+        "linux": {
+            "target": [
+                "AppImage",
+                "zip"
+            ]
+        },
+        "win": {
+            "icon": "icons/icon.ico",
+            "target": [
+                "NSIS",
+                "zip"
+            ]
+        },
+        "directories": {
+            "output": "release"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/DerGoogler/googlers-editor.git"
+    },
+    "author": {
+        "name": "Der_Googler",
+        "url": "https://dergoogler.github.io"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/DerGoogler/googlers-editor/issues"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^3.4.0",
+        "@typescript-eslint/parser": "^3.4.0",
+        "electron": "^11.2.3",
+        "electron-builder": "^22.9.1",
+        "eslint": "^7.3.1",
+        "typescript": "^3.9.5"
+    },
+    "dependencies": {
+        "@types/codemirror": "0.0.108",
+        "codemirror": "^5.59.2",
+        "custom-electron-titlebar": "^3.2.6"
+    }
+}
